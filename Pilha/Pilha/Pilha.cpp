@@ -86,13 +86,38 @@ void push()
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
 	novo->prox = NULL;
+	
+	if (topo == NULL) {
+		topo = novo;
+		return;
+	}
+
+	novo->prox = topo;
+	topo = novo;
 
 
 }
 
 void pop()
 {
+	if (topo == NULL) {
+		cout << "Pilha Vazia" << endl;
+		return;
+	}
 
+	cout << "O ultimo elemento era: " << topo->valor << endl;
+
+	NO* lastElement = topo;
+
+	topo = topo->prox;
+	free(lastElement);
+
+	if (topo == NULL) {
+		cout << "Pilha Vazia" << endl;
+		return;
+	}
+
+	cout << "O topo agora e: " << topo->valor << endl;
 	
 
 }
